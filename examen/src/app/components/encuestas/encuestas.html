@@ -1,0 +1,4 @@
+<section class="container mx-auto p-6">
+    <h1 class="text-2xl">Listado Encuestas</h1>
+    <app-tabla-encuestas [encuestas]="listadoEncuestas" (estadistica)="redirigirEstadistica($event)" (respuesta)="redirigirRespuestas($event)"></app-tabla-encuestas>
+</section>

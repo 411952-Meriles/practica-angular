@@ -1,0 +1,32 @@
+<section>
+    <h1 class="text-2xl">{{encuesta?.titulo}}</h1>
+    <!-- Importar FormsModule en el modulo de imports -->
+    <!-- El # crea una referencia al elemento html (para poder acceder a sus atributos con encuestaForm) -->
+    <!-- ngForm es necesario para  -->
+    <!-- (ngSubmit) se usa como evento de submit en vez de (submit) -->
+    <form #encuestaForm="ngForm" (ngSubmit)="enviarFormulario()">
+        @for (pregunta of encuesta?.preguntas; track $index) {
+            <label for="">{{pregunta.contenido}}</label>
+
+            <!-- [(ngModel)]: Conectar el input con la propiedad de la clase -->
+            <input 
+                type="text" 
+                class="bg-black text-white" 
+                [(ngModel)]="respuesta.respuestas[$index].contenido" 
+                name="respuesta{{$index}}" 
+                #resp="ngModel"
+            >
+
+            @if (resp.invalid && (resp.touched || resp.dirty)) {
+                <span>Campo requerido</span>
+            }
+            
+        }
+
+        <button class="bg-indigo-600 rounded px-2 py-1">Enviar</button>
+    </form>
+
+    <!-- Importar RouterLink en el modulo de imports -->
+    <!-- Usar comillas simples en las rutas porque sino se confunde -->
+    <button [routerLink]="['/encuestas']">Cancelar</button>
+</section>

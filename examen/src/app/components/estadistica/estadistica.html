@@ -1,0 +1,9 @@
+<section>
+    <p>Titulo: {{estadistica?.tituloEncuensta}}</p>
+    <div class="bg-gray-200">
+        @for (pregunta of estadistica?.estadisticasPreguntas; track $index) {
+            <p>Cantidad respuestas totales: {{pregunta.cantidadTotalRespustas}}</p>
+            <p>Pregunta: {{pregunta.contenidoPregunta}}</p>
+        }
+    </div>
+</section>
